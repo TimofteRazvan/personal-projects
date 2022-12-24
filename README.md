@@ -1,2 +1,2 @@
 # personal-projects
-Projects done in my free time, in varying states of completion.
+Small projects done in my free time, in varying states of completion.
