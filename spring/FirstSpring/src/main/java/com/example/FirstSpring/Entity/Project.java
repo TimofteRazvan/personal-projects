@@ -1,7 +1,9 @@
 package com.example.FirstSpring.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -13,8 +15,14 @@ public class Project {
     private String name;
     private String clientName;
 
+    // JSONIGNORE required to avoid endless looping when doing GET with POSTMAN
+    @JsonIgnore
     @ManyToMany(mappedBy = "projects")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
+
+    public Project() {
+
+    }
 
     public Project(String name, String clientName) {
         this.name = name;

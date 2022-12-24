@@ -1,5 +1,6 @@
 package com.example.FirstSpring.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -15,16 +16,34 @@ public class Address {
     private String state;
     private String country;
 
+    // JSONIGNORE required to avoid endless looping when doing GET with POSTMAN
+    @JsonIgnore
     @ManyToOne
     private Employee employee;
 
-    public Address(String line1, String line2, String zipCode, String city, String state, String country) {
+    public Address() {
+
+    }
+
+    public Address(String line1, String line2, String zipCode, String city,
+                   String state, String country) {
         this.line1 = line1;
         this.line2 = line2;
         this.zipCode = zipCode;
         this.city = city;
         this.state = state;
         this.country = country;
+    }
+
+    public Address(String line1, String line2, String zipCode, String city,
+                   String state, String country, Employee employee) {
+        this.line1 = line1;
+        this.line2 = line2;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.state = state;
+        this.country = country;
+        this.employee = employee;
     }
 
     public int getId() {

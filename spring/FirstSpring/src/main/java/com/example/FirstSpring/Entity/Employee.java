@@ -2,7 +2,10 @@ package com.example.FirstSpring.Entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Employee {
@@ -12,21 +15,44 @@ public class Employee {
     private String name;
     private String city;
 
-    @OneToOne
+    // ALL propagates all operations to the children (AKA saves & deletes children along with parent)
+    // PERSIST propagates only the save operations, doesn't allow deletion on parent because of foreign key constraints
+    // REMOVE propagates the remove operations; when combined wtih PERSIST basically works like ALL
+    // Can specify multiple CASCADE options, like both PERSIST and REMOVE
+
+    // FETCH TYPE is EAGER by default because ONEtoONE relation
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name="fk_spouse")
     private Spouse spouse;
 
-    @OneToMany
+    // EAGER: Fetches even if not called for
+    // A:
+    // 1. No delay in data loading
+    // D:
+    // 1. Higher load time (if lots of data)
+    // 2. Might trigger high memory usage (stored in memory irrespective of usage)
+
+    // LAZY: Fetches only if called for
+    // A:
+    // 1. Seems fast by default
+    // B:
+    // 2. Might experience load time when trying to access dependencies
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Address> addresses;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(name = "employee_project",
             joinColumns = @JoinColumn(name = "fk_employee"),
             inverseJoinColumns = @JoinColumn(name = "fk_project"))
-    private List<Project> projects;
+    private Set<Project> projects = new HashSet<>();
 
     public Employee() {
 
+    }
+
+    public Employee(String name, String city) {
+        this.name = name;
+        this.city = city;
     }
 
     public Employee(int id, String name, String city) {
@@ -75,11 +101,11 @@ public class Employee {
         this.addresses = addresses;
     }
 
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 
@@ -91,5 +117,16 @@ public class Employee {
     public void addProject(Project project) {
         this.projects.add(project);
         project.getEmployees().add(this);
+    }
+
+    public void addAddress(Address address) {
+        this.addresses = new ArrayList<>();
+        this.addresses.add(address);
+        address.setEmployee(this);
+    }
+
+    public void removeAddress(Address address) {
+        this.addresses.remove(address);
+        address.setEmployee(null);
     }
 }
