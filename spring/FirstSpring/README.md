@@ -14,6 +14,6 @@ Technologies used:
 6. JPA (Java Persistence API)
 7. H2
 
-TODO:
+~~TODO:~~
 - ~~Cascading~~
 - ~~Fetching~~
