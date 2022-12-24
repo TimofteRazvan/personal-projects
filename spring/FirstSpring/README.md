@@ -15,5 +15,5 @@ Technologies used:
 7. H2
 
 TODO:
-- Cascading
-- Fetching(?)
+- ~~Cascading~~
+- ~~Fetching~~
