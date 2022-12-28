@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:each="names : ${list}">
+  <p th:text="${names}"></p>
+</div>
+<h3>Status</h3>
+<div th:each="names, status : ${list}">
+  <p th:text="${status.index+1}+'.'+${names}"></p>
+</div>
+<h3>Status 2</h3>
+<div th:each="names, status : ${list}">
+  <p th:style="${status.odd} ? 'color:red' : 'color:green'" th:text="${status.index+1}+''+${names}"></p>
+</div>
+</body>
+</html>
