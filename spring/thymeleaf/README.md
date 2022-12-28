@@ -1,5 +1,4 @@
-A simple project combining Springboot & Thymeleaf. Mostly playing around with Thymeleaf's formats.
-Uses SpringWeb & Thymeleaf dependencies.
+A simple project combining Springboot & Thymeleaf. Mostly playing around with formats & making web-pages.
 
 Technologies used:
 1. Spring(boot)
