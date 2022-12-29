@@ -17,3 +17,14 @@ Technologies used:
 ~~TODO:~~
 - ~~Cascading~~
 - ~~Fetching~~
+
+<div align="center"><h2>POSTMAN</h2>
+
+![](https://github.com/TimofteRazvan/personal-projects/blob/main/spring/FirstSpring/screenshots/Capture.PNG?raw=true)
+
+<h2>H2 DATABASE</h2>
+
+![](https://github.com/TimofteRazvan/personal-projects/blob/main/spring/FirstSpring/screenshots/Capture2.PNG)
+
+
+</div>
