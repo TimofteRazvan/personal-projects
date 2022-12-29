@@ -20,3 +20,16 @@ TODO:
 - Full website functionality
 - Log-in via Spring Security
 - Admin mode (Allowing all operations) / User mode (Read-only)
+
+<div align="center"><h2>Hardcoded Entities</h2>
+
+![](https://github.com/TimofteRazvan/personal-projects/blob/main/spring/OnlineLibrary/Capture0.PNG)
+
+<h2>H2 Database (localhost:8080/h2-console/)</h2>
+
+![](https://github.com/TimofteRazvan/personal-projects/blob/main/spring/OnlineLibrary/Capture2.PNG)
+
+<h2>Homepage (localhost:8080/books/)</h2>
+
+![](https://github.com/TimofteRazvan/personal-projects/blob/main/spring/OnlineLibrary/Capture.PNG)
+</div>
